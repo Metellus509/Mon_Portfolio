@@ -4,15 +4,15 @@ import React, { useState } from "react";
 import ContactModal from "./ContactModal";
 
 // Import images properly for Vite
-import reactLogo from "../assets/react.svg";
+import reactLogo from "../assets/React.svg";
 import flaskLogo from "../assets/Flask.png";
 import pythonLogo from "../assets/Python.png";
-import githubLogo from "../assets/Github.png";
+import githubLogo from "../assets/GitHub.png";
 import postgresLogo from "../assets/PostgresSQL.png";
 import linuxLogo from "../assets/Linux.png";
 import css3Logo from "../assets/CSS3.png";
 import jsLogo from "../assets/JavaScript.png";
-import appManagerImg from "../assets/AppMnager.png";
+import appManagerImg from "../assets/AppManager.png";
 import Footer from "./Footer";
 
 const navigation = [
