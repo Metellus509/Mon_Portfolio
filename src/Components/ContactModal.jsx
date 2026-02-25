@@ -43,7 +43,7 @@ const handleSubmit = async (e) => {
       return;
     }
 
-    alert('Votre message a été envoyé avec succès !');
+    alert('Your message has been sent successfully! I will get back to you as soon as possible.');
 
     setFormData({
       name: '',
@@ -53,7 +53,7 @@ const handleSubmit = async (e) => {
       message: ''
     });
 
-    setTimeout(() => closeModal(), 500);
+    setTimeout(() => closeModal(), 250);
 
   } catch (error) {
     console.error("Network error:", error);
