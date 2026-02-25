@@ -3,6 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon, EnvelopeIcon, UserIcon, PhoneIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
 
 export default function ContactModal({ isOpen, closeModal }) {
+  const [isSubmitting,setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,6 +21,10 @@ export default function ContactModal({ isOpen, closeModal }) {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+
+  if(isSubmitting) return; // Prevent multiple submissions
+
+  setIsSubmitting(true);
 
   try {
     const response = await fetch('http://localhost:5000/send-email', {
@@ -99,7 +104,7 @@ const handleSubmit = async (e) => {
                       </p>
                     </div>
                     <button
-                      onClick={closeModal}
+                      onClick={closeModal} 
                       className="rounded-lg p-2 text-gray-400 hover:bg-white/10 hover:text-white transition-all duration-300 group"
                     >
                       <XMarkIcon className="h-6 w-6 group-hover:rotate-90 transition-transform duration-300" />
@@ -282,9 +287,10 @@ const handleSubmit = async (e) => {
                       {/* Submit Button */}
                       <button
                         type="submit"
+                        disabled={isSubmitting}
                         className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-4 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 group"
                       >
-                        <span>Send Message</span>
+                        <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
                         <PaperAirplaneIcon className="h-5 w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                       </button>
                     </form>
